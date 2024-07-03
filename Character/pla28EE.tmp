@@ -188,7 +188,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xixx1")
 }],
-"loop": false,
+"loop": true,
 "name": &"attack",
 "speed": 5.0
 }, {
@@ -199,7 +199,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tdj07")
 }],
-"loop": false,
+"loop": true,
 "name": &"dead",
 "speed": 5.0
 }, {
@@ -210,7 +210,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6fm67")
 }],
-"loop": false,
+"loop": true,
 "name": &"hurt",
 "speed": 5.0
 }, {
@@ -277,9 +277,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_g54tn")
 }],
-"loop": false,
+"loop": true,
 "name": &"jump",
-"speed": 25.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -319,11 +319,14 @@ size = Vector2(64, 56)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_nk0sd")
+speed = null
+jump = null
+double_jump = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-57, -97)
 sprite_frames = SubResource("SpriteFrames_popvc")
-animation = &"jump"
+animation = &"run"
 autoplay = "idle"
 centered = false
 
