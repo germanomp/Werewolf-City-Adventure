@@ -8,6 +8,10 @@ extends CharacterBody2D
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var animation_locked = false
 var direction = Vector2.ZERO 
+var is_attacking = false
+
+func _ready():
+	animated_sprite.connect("animation_finished", Callable(self, "_on_AnimatedSprite2D_animation_finished"))
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -16,6 +20,10 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("up") or Input.is_action_just_pressed("jump"):
 		if is_on_floor():
 			velocity.y = jump_speed
+			
+	if Input.is_action_just_pressed("attack"): 
+		is_attacking = true
+		animated_sprite.play("attack")
 
 	direction = Input.get_vector("left", "right","up","down")
 	if direction:
@@ -28,7 +36,7 @@ func _physics_process(delta):
 	update_direction()
 
 func update_animation():
-	if not animation_locked:
+	if not animation_locked and not is_attacking:
 		if not is_on_floor():
 			if velocity.y < 0:
 				animated_sprite.play("jump")
@@ -43,3 +51,8 @@ func update_direction():
 		animated_sprite.flip_h = false
 	elif direction.x < 0:
 		animated_sprite.flip_h = true
+		
+func _on_AnimatedSprite2D_animation_finished():
+	if animated_sprite.animation == "attack":
+		is_attacking = false
+		
