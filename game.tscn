@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cftqk0fmvwtup"]
+[gd_scene load_steps=6 format=3 uid="uid://cftqk0fmvwtup"]
 
 [ext_resource type="Texture2D" uid="uid://cnieg61sg3oqh" path="res://art/oak_woods_v1.0/oak_woods_tileset.png" id="1_inr7e"]
 [ext_resource type="PackedScene" uid="uid://en8wi0qtv0tv" path="res://Character/player.tscn" id="2_myph0"]
+[ext_resource type="PackedScene" uid="uid://etthwiro3vmq" path="res://Character/Enemies/enemy.tscn" id="3_e1ni2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v7sa8"]
 texture = ExtResource("1_inr7e")
@@ -1354,3 +1355,6 @@ layer_0/tile_data = PackedInt32Array(720904, 0, 0, 720905, 65536, 0, 720906, 131
 [node name="Player" parent="." instance=ExtResource("2_myph0")]
 position = Vector2(178, 159)
 scale = Vector2(0.5, 0.5)
+
+[node name="Enemy" parent="." instance=ExtResource("3_e1ni2")]
+position = Vector2(308, 130)

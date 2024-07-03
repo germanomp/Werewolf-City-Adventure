@@ -1,0 +1,88 @@
+[gd_scene load_steps=13 format=3 uid="uid://etthwiro3vmq"]
+
+[ext_resource type="Script" path="res://Character/Enemies/Enemy.gd" id="1_n2bit"]
+[ext_resource type="Texture2D" uid="uid://bej1ankwo76a3" path="res://art/EVil Wizard 2/Idle.png" id="2_qv4du"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hh5r3"]
+atlas = ExtResource("2_qv4du")
+region = Rect2(0, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vue14"]
+atlas = ExtResource("2_qv4du")
+region = Rect2(250, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khe7u"]
+atlas = ExtResource("2_qv4du")
+region = Rect2(500, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38gvt"]
+atlas = ExtResource("2_qv4du")
+region = Rect2(750, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjujj"]
+atlas = ExtResource("2_qv4du")
+region = Rect2(1000, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4eq0a"]
+atlas = ExtResource("2_qv4du")
+region = Rect2(1250, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tisc"]
+atlas = ExtResource("2_qv4du")
+region = Rect2(1500, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_520qf"]
+atlas = ExtResource("2_qv4du")
+region = Rect2(1750, 0, 250, 250)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jjxep"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hh5r3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vue14")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khe7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38gvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjujj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4eq0a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tisc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_520qf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vbmb0"]
+radius = 8.0
+height = 52.0
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("1_n2bit")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jjxep")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 16)
+shape = SubResource("CapsuleShape2D_vbmb0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

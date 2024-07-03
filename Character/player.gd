@@ -1,4 +1,12 @@
+@icon("res://art/free-werewolf-sprite-sheets-pixel-art/Black_Werewolf/walk1.png")
+
 extends CharacterBody2D
+
+const FRICTION: float = 0.15
+
+@export var max_hp: int = 4
+@export var hp: int = 2
+signal hp_changed(new_hp)
 
 @export var speed = 200
 @export var jump_speed = -300
@@ -56,3 +64,12 @@ func _on_AnimatedSprite2D_animation_finished():
 	if animated_sprite.animation == "attack":
 		is_attacking = false
 		
+func take_damage(dam: int, dir: Vector2, force: int) -> void:
+	self.hp -= dam
+	if hp > 0:
+		animated_sprite.play("hurt")
+		velocity += dir * force
+	else: 
+		animated_sprite.play("dead")
+		velocity += dir * force * 2
+	
