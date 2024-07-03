@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://en8wi0qtv0tv"]
+[gd_scene load_steps=49 format=3 uid="uid://en8wi0qtv0tv"]
 
 [ext_resource type="Script" path="res://Character/player.gd" id="1_nk0sd"]
 [ext_resource type="Texture2D" uid="uid://bj3gayeak07is" path="res://art/free-werewolf-sprite-sheets-pixel-art/Black_Werewolf/Run+Attack.png" id="2_vl3qd"]
@@ -84,19 +84,47 @@ region = Rect2(768, 0, 128, 128)
 atlas = ExtResource("5_hx260")
 region = Rect2(896, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1l8pk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_roxb6"]
+atlas = ExtResource("6_62ej2")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5dyl"]
+atlas = ExtResource("6_62ej2")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sey1y"]
+atlas = ExtResource("6_62ej2")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlksj"]
 atlas = ExtResource("6_62ej2")
 region = Rect2(384, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xmpak"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_cveui"]
+atlas = ExtResource("6_62ej2")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7asqj"]
+atlas = ExtResource("6_62ej2")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwj20"]
 atlas = ExtResource("6_62ej2")
 region = Rect2(768, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sdklg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovicj"]
 atlas = ExtResource("6_62ej2")
 region = Rect2(896, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g54tn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_m11wi"]
+atlas = ExtResource("6_62ej2")
+region = Rect2(1024, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxag3"]
+atlas = ExtResource("6_62ej2")
+region = Rect2(1152, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6kgd2"]
 atlas = ExtResource("6_62ej2")
 region = Rect2(1280, 0, 128, 128)
 
@@ -217,20 +245,41 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1l8pk")
+"texture": SubResource("AtlasTexture_roxb6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xmpak")
+"texture": SubResource("AtlasTexture_g5dyl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sdklg")
+"texture": SubResource("AtlasTexture_sey1y")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g54tn")
+"texture": SubResource("AtlasTexture_dlksj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cveui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7asqj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwj20")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovicj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m11wi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxag3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6kgd2")
 }],
 "loop": false,
 "name": &"jump",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -262,7 +311,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 5.0
+"speed": 15.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yyp7x"]
@@ -276,6 +325,8 @@ position = Vector2(-57, -97)
 sprite_frames = SubResource("SpriteFrames_popvc")
 animation = &"jump"
 autoplay = "idle"
+frame = 10
+frame_progress = 1.0
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
