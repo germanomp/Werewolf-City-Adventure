@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://en8wi0qtv0tv"]
+[gd_scene load_steps=42 format=3 uid="uid://en8wi0qtv0tv"]
 
 [ext_resource type="Script" path="res://Character/player.gd" id="1_nk0sd"]
 [ext_resource type="Texture2D" uid="uid://bj3gayeak07is" path="res://art/free-werewolf-sprite-sheets-pixel-art/Black_Werewolf/Run+Attack.png" id="2_vl3qd"]
@@ -84,29 +84,9 @@ region = Rect2(768, 0, 128, 128)
 atlas = ExtResource("5_hx260")
 region = Rect2(896, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xa35f"]
-atlas = ExtResource("6_62ej2")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ipvjd"]
-atlas = ExtResource("6_62ej2")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nl0f2"]
-atlas = ExtResource("6_62ej2")
-region = Rect2(256, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mepix"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1l8pk"]
 atlas = ExtResource("6_62ej2")
 region = Rect2(384, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_20fjb"]
-atlas = ExtResource("6_62ej2")
-region = Rect2(512, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_goevj"]
-atlas = ExtResource("6_62ej2")
-region = Rect2(640, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xmpak"]
 atlas = ExtResource("6_62ej2")
@@ -115,14 +95,6 @@ region = Rect2(768, 0, 128, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_sdklg"]
 atlas = ExtResource("6_62ej2")
 region = Rect2(896, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_auup0"]
-atlas = ExtResource("6_62ej2")
-region = Rect2(1024, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_37g7w"]
-atlas = ExtResource("6_62ej2")
-region = Rect2(1152, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g54tn"]
 atlas = ExtResource("6_62ej2")
@@ -245,22 +217,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xa35f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ipvjd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nl0f2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mepix")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_20fjb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_goevj")
+"texture": SubResource("AtlasTexture_1l8pk")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xmpak")
@@ -269,17 +226,11 @@ animations = [{
 "texture": SubResource("AtlasTexture_sdklg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_auup0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_37g7w")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_g54tn")
 }],
 "loop": false,
 "name": &"jump",
-"speed": 25.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -332,6 +283,7 @@ position = Vector2(14, 4)
 shape = SubResource("RectangleShape2D_yyp7x")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.5, 2.5)
 process_callback = 0
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
