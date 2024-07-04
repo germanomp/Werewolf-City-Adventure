@@ -16,7 +16,7 @@ var direction = Vector2.ZERO
 
 @export var attacking = false
 
-var max_health = 100
+var max_health = 10
 var health = 0
 var can_take_damage = true
 
@@ -85,7 +85,7 @@ func iframes():
 	can_take_damage = true
 	
 func die():
-	get_tree().reload_scene()
+	queue_free()
 
 func attack():
 	attacking = true

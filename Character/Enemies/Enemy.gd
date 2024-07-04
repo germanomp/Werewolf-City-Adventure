@@ -2,6 +2,8 @@
 
 extends CharacterBody2D
 
+@onready var animation = $AnimationPlayer
+
 var speed = 60
 var max_health = 10
 var health 
@@ -44,3 +46,8 @@ func take_damage(damage):
 
 func die():
 	queue_free()
+
+func _on_attack_area_area_entered(area):
+	animation.play("attack")
+	if area.get_parent().is_in_group("player"):
+		area.get_parent().take_damage(5)
