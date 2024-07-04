@@ -5,7 +5,7 @@ extends CharacterBody2D
 const FRICTION: float = 0.15
 
 @export var speed = 200
-@export var jump_speed = -300
+@export var jump_speed = -500
 
 @onready var animation = $AnimationPlayer
 @onready var animated_sprite = $AnimatedSprite2D
@@ -16,9 +16,11 @@ var direction = Vector2.ZERO
 
 @export var attacking = false
 
-var max_health = 5
+var max_health = 100
 var health = 0
 var can_take_damage = true
+
+signal health_changed(health)
 
 func _process(delta):
 	if Input.is_action_just_pressed("attack"):
@@ -51,11 +53,12 @@ func attack():
 	var overlapping_objects = $AttackArea.get_overlapping_areas()
 	
 	for area in overlapping_objects:
-		var parent = area.get_parent()
-		parent.queue_free()
-	
+		if area.get_parent().is_in_group("inimigos"):
+			area.get_parent().die()
+
 	attacking = true
 	animation.play("attack")
+
 
 func update_animation():
 	if not animation_locked and not attacking:
@@ -82,6 +85,7 @@ func take_damage(damage : int):
 	if can_take_damage:
 		iframes()
 		health -= damage
+		health_changed.emit(health)
 		
 		if health <= 0:
 			die()
@@ -93,3 +97,4 @@ func iframes():
 	
 func die():
 	get_tree().reload_scene()
+

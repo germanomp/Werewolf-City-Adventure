@@ -3,6 +3,8 @@
 extends CharacterBody2D
 
 var speed = 60
+var max_health = 10
+var health = 0
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") 
 
@@ -30,3 +32,11 @@ func flip():
 		speed = abs(speed)
 	else: 
 		speed = abs(speed) * -1
+		
+func take_damage(damage : int):
+		health -= damage
+		if health <= 0:
+			queue_free()
+
+func die():
+	queue_free()

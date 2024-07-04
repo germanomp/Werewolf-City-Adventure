@@ -224,12 +224,11 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0nxh1"]
-radius = 9.0
+radius = 15.0
 height = 54.0
 
-[node name="Enemy" type="CharacterBody2D"]
-collision_layer = 5
-collision_mask = 5
+[node name="Enemy" type="CharacterBody2D" groups=["inimigos"]]
+collision_layer = 4
 script = ExtResource("1_n2bit")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -247,6 +246,8 @@ libraries = {
 }
 
 [node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(-1, 16)
