@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://en8wi0qtv0tv"]
+[gd_scene load_steps=59 format=3 uid="uid://en8wi0qtv0tv"]
 
 [ext_resource type="Script" path="res://Character/player.gd" id="1_nk0sd"]
 [ext_resource type="Texture2D" uid="uid://bj3gayeak07is" path="res://art/free-werewolf-sprite-sheets-pixel-art/Black_Werewolf/Run+Attack.png" id="2_vl3qd"]
@@ -553,6 +553,9 @@ _data = {
 radius = 7.0
 height = 54.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0f2o3"]
+size = Vector2(81, 52)
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 5
 collision_mask = 5
@@ -565,7 +568,7 @@ animation = &"attack"
 autoplay = "idle"
 centered = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(11.5, 5)
 shape = SubResource("RectangleShape2D_k0lmo")
 
@@ -587,3 +590,9 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 position = Vector2(61, -8)
 shape = SubResource("CapsuleShape2D_11fwp")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(11.5, 5)
+shape = SubResource("RectangleShape2D_0f2o3")

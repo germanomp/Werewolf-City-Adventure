@@ -71,8 +71,12 @@ func update_animation():
 func update_direction():
 	if direction.x > 0:
 		animated_sprite.flip_h = false
+		$Hitbox.scale.x = abs($Hitbox.scale.x)
+		$AttackArea.scale.x = abs($AttackArea.scale.x) 
 	elif direction.x < 0:
 		animated_sprite.flip_h = true
+		$Hitbox.scale.x = abs($Hitbox.scale.x) * -1
+		$AttackArea.scale.x = abs($AttackArea.scale.x) * -1
 		
 func take_damage(damage : int):
 	if can_take_damage:
