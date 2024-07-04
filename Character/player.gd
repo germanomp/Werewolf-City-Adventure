@@ -13,13 +13,19 @@ const FRICTION: float = 0.15
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var animation_locked = false
 var direction = Vector2.ZERO 
+
 @export var attacking = false
+
+var max_health = 5
+var health = 0
+var can_take_damage = true
 
 func _process(delta):
 	if Input.is_action_just_pressed("attack"):
 		attack()
 
 func _ready():
+	health = max_health
 	animation.connect("animation_finished", Callable(self, "_on_Animation_finished"))
 
 func _physics_process(delta):
@@ -68,4 +74,18 @@ func update_direction():
 	elif direction.x < 0:
 		animated_sprite.flip_h = true
 		
+func take_damage(damage : int):
+	if can_take_damage:
+		iframes()
+		health -= damage
+		
+		if health <= 0:
+			die()
 
+func iframes():
+	can_take_damage = false
+	await get_tree().create_timer(1).timeout
+	can_take_damage = true
+	
+func die():
+	get_tree().reload_scene()
