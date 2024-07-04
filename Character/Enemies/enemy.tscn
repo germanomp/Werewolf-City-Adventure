@@ -1,6 +1,7 @@
-[gd_scene load_steps=27 format=3 uid="uid://etthwiro3vmq"]
+[gd_scene load_steps=28 format=3 uid="uid://etthwiro3vmq"]
 
 [ext_resource type="Script" path="res://Character/Enemies/Enemy.gd" id="1_n2bit"]
+[ext_resource type="PackedScene" uid="uid://dim5pf06vioxw" path="res://cenas/ui/health_bar.tscn" id="2_egjgq"]
 [ext_resource type="Texture2D" uid="uid://bej1ankwo76a3" path="res://art/EVil Wizard 2/Idle.png" id="2_qv4du"]
 [ext_resource type="Texture2D" uid="uid://bcsjd25w4e775" path="res://art/EVil Wizard 2/Run.png" id="3_ho53p"]
 
@@ -230,6 +231,12 @@ height = 54.0
 [node name="Enemy" type="CharacterBody2D" groups=["inimigos"]]
 collision_layer = 4
 script = ExtResource("1_n2bit")
+
+[node name="HealthBar" parent="." instance=ExtResource("2_egjgq")]
+offset_left = 0.0
+offset_top = -23.0
+offset_right = 0.0
+offset_bottom = -23.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_jjxep")

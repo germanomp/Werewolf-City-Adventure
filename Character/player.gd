@@ -93,4 +93,4 @@ func attack():
 
 func _on_attack_area_area_entered(area):
 	if area.get_parent().is_in_group("inimigos"):
-		area.get_parent().take_damage(10)
+		area.get_parent().take_damage(5)
