@@ -4,22 +4,23 @@ extends CharacterBody2D
 
 const FRICTION: float = 0.15
 
-@export var max_hp: int = 4
-@export var hp: int = 2
-signal hp_changed(new_hp)
-
 @export var speed = 200
 @export var jump_speed = -300
 
+@onready var animation = $AnimationPlayer
 @onready var animated_sprite = $AnimatedSprite2D
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var animation_locked = false
 var direction = Vector2.ZERO 
-var is_attacking = false
+@export var attacking = false
+
+func _process(delta):
+	if Input.is_action_just_pressed("attack"):
+		attack()
 
 func _ready():
-	animated_sprite.connect("animation_finished", Callable(self, "_on_AnimatedSprite2D_animation_finished"))
+	animation.connect("animation_finished", Callable(self, "_on_Animation_finished"))
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -29,9 +30,6 @@ func _physics_process(delta):
 		if is_on_floor():
 			velocity.y = jump_speed
 			
-	if Input.is_action_just_pressed("attack"): 
-		is_attacking = true
-		animated_sprite.play("attack")
 
 	direction = Input.get_vector("left", "right","up","down")
 	if direction:
@@ -42,17 +40,27 @@ func _physics_process(delta):
 	move_and_slide()
 	update_animation()
 	update_direction()
+	
+func attack():
+	var overlapping_objects = $AttackArea.get_overlapping_areas()
+	
+	for area in overlapping_objects:
+		var parent = area.get_parent()
+		parent.queue_free()
+	
+	attacking = true
+	animation.play("attack")
 
 func update_animation():
-	if not animation_locked and not is_attacking:
+	if not animation_locked and not attacking:
 		if not is_on_floor():
 			if velocity.y < 0:
-				animated_sprite.play("jump")
+				animation.play("jump")
 		else:
 			if direction.x != 0:
-				animated_sprite.play("run")
+				animation.play("run")
 			elif direction.x == 0:
-				animated_sprite.play("idle")
+				animation.play("idle")
 			
 func update_direction():
 	if direction.x > 0:
@@ -60,16 +68,4 @@ func update_direction():
 	elif direction.x < 0:
 		animated_sprite.flip_h = true
 		
-func _on_AnimatedSprite2D_animation_finished():
-	if animated_sprite.animation == "attack":
-		is_attacking = false
-		
-func take_damage(dam: int, dir: Vector2, force: int) -> void:
-	self.hp -= dam
-	if hp > 0:
-		animated_sprite.play("hurt")
-		velocity += dir * force
-	else: 
-		animated_sprite.play("dead")
-		velocity += dir * force * 2
-	
+
