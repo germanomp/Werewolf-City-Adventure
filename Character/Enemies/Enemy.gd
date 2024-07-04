@@ -33,7 +33,7 @@ func flip():
 	else: 
 		speed = abs(speed) * -1
 		
-func take_damage(damage : int):
+func take_damage(damage):
 		health -= damage
 		
 		if health <= 0:

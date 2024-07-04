@@ -49,17 +49,6 @@ func _physics_process(delta):
 	update_animation()
 	update_direction()
 	
-func attack():
-	var overlapping_objects = $AttackArea.get_overlapping_areas()
-	
-	for area in overlapping_objects:
-		if area.get_parent().is_in_group("inimigos"):
-			area.get_parent().die()
-
-	attacking = true
-	animation.play("attack")
-
-
 func update_animation():
 	if not animation_locked and not attacking:
 		if not is_on_floor():
@@ -98,3 +87,10 @@ func iframes():
 func die():
 	get_tree().reload_scene()
 
+func attack():
+	attacking = true
+	animation.play("attack")
+
+func _on_attack_area_area_entered(area):
+	if area.get_parent().is_in_group("inimigos"):
+		area.get_parent().take_damage(10)

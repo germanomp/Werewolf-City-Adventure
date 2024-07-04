@@ -622,3 +622,5 @@ disabled = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(11.5, 5)
 shape = SubResource("RectangleShape2D_0f2o3")
+
+[connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_area_entered"]
