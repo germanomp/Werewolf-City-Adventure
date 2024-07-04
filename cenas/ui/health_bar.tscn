@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_scene load_steps=2 format=3 uid="uid://dim5pf06vioxw"]
+=======
+[gd_scene load_steps=2 format=3 uid="uid://cx2yq80h5luo0"]
+>>>>>>> healthbar
 
 [ext_resource type="Script" path="res://cenas/ui/health_bar.gd" id="1_achjd"]
 
