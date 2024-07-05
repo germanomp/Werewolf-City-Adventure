@@ -8,7 +8,7 @@ var speed = 60
 var max_health = 20
 var health 
 
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") 
+var gravity = 900 
 
 var facing_right = true
 

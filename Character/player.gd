@@ -8,7 +8,7 @@ extends CharacterBody2D
 @onready var animation = $AnimationPlayer
 @onready var animated_sprite = $AnimatedSprite2D
 
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var gravity = 900
 var animation_locked = false
 var direction = Vector2.ZERO 
 
