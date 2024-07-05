@@ -14,6 +14,7 @@ var direction = Vector2.ZERO
 
 @export var attacking = false
 
+var is_dead = false
 var max_health = 50
 var health = 0
 var can_take_damage = true
@@ -48,7 +49,7 @@ func _physics_process(delta):
 	update_direction()
 	
 func update_animation():
-	if not animation_locked and not attacking:
+	if not animation_locked and not attacking and not is_dead:
 		if not is_on_floor():
 			if velocity.y < 0:
 				animation.play("jump")
@@ -70,6 +71,7 @@ func update_direction():
 		
 func take_damage(damage : int):
 	if can_take_damage:
+		animation.play("hurt")
 		iframes()
 		health -= damage
 		health_changed.emit(health)
@@ -83,7 +85,9 @@ func iframes():
 	can_take_damage = true
 	
 func die():
-	queue_free()
+	print("morreu")
+	is_dead = true
+	animation.play("dead")
 
 func attack():
 	attacking = true
