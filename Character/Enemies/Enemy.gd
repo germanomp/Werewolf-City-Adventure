@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var animation = $AnimationPlayer
 
 var speed = 60
-var max_health = 10
+var max_health = 20
 var health 
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") 

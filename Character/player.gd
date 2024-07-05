@@ -2,8 +2,6 @@
 
 extends CharacterBody2D
 
-const FRICTION: float = 0.15
-
 @export var speed = 200
 @export var jump_speed = -500
 
@@ -16,7 +14,7 @@ var direction = Vector2.ZERO
 
 @export var attacking = false
 
-var max_health = 10
+var max_health = 50
 var health = 0
 var can_take_damage = true
 
