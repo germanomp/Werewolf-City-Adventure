@@ -1,0 +1,69 @@
+[gd_scene load_steps=13 format=3 uid="uid://dwx764qee1nfa"]
+
+[ext_resource type="Texture2D" uid="uid://cn6b4lpfqyd7i" path="res://art/Crystal_Animation/Red/red_crystal_0000.png" id="1_h1wwm"]
+[ext_resource type="Script" path="res://cenas/misc/crystal.gd" id="1_y4om2"]
+[ext_resource type="Texture2D" uid="uid://c845f6f6v5r45" path="res://art/Crystal_Animation/Red/red_crystal_0001.png" id="2_e3nsy"]
+[ext_resource type="Texture2D" uid="uid://3olgbm2ylr3r" path="res://art/Crystal_Animation/Red/red_crystal_0002.png" id="3_b3ua2"]
+[ext_resource type="Texture2D" uid="uid://bm61v641a5egn" path="res://art/Crystal_Animation/Red/red_crystal_0003.png" id="4_o2urt"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_odjrd"]
+height = 36.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3yph"]
+atlas = ExtResource("1_h1wwm")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lh3a"]
+atlas = ExtResource("2_e3nsy")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8p7d"]
+atlas = ExtResource("3_b3ua2")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oted3"]
+atlas = ExtResource("4_o2urt")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0gsai"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3yph")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1lh3a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8p7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oted3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dqwbh"]
+height = 36.0
+
+[node name="Crystal" type="CharacterBody2D" groups=["inimigos"]]
+collision_layer = 4
+script = ExtResource("1_y4om2")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-1, 3)
+shape = SubResource("CapsuleShape2D_odjrd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0gsai")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 3)
+shape = SubResource("CapsuleShape2D_dqwbh")
