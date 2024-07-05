@@ -16,6 +16,14 @@ run/main_scene="res://game.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://art/free-werewolf-sprite-sheets-pixel-art/Black_Werewolf/walk1.png"
 
+[display]
+
+window/size/viewport_width=768
+window/size/viewport_height=416
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+
 [importer_defaults]
 
 animation_library={
