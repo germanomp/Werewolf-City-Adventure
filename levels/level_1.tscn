@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://biv8ulkxtmsnh"]
+[gd_scene load_steps=22 format=3 uid="uid://biv8ulkxtmsnh"]
 
 [ext_resource type="Texture2D" uid="uid://cnieg61sg3oqh" path="res://art/oak_woods_v1.0/oak_woods_tileset.png" id="1_l5qux"]
 [ext_resource type="PackedScene" uid="uid://p214ir1p5dnp" path="res://cenas/parallax.tscn" id="2_ijh82"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://etthwiro3vmq" path="res://Character/Enemies/enemy.tscn" id="4_nrr2f"]
 [ext_resource type="PackedScene" uid="uid://befvfkmyyd4uw" path="res://Character/Villagers/villager_1.tscn" id="5_fy4dx"]
 [ext_resource type="PackedScene" uid="uid://dwx764qee1nfa" path="res://cenas/misc/crystal.tscn" id="6_qcjyc"]
+[ext_resource type="PackedScene" uid="uid://cnt16cvbjfcmg" path="res://cenas/misc/trap.tscn" id="7_rqmdb"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_rbe5p"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -1374,3 +1375,6 @@ position = Vector2(235, 252)
 [node name="Crystal" parent="." instance=ExtResource("6_qcjyc")]
 position = Vector2(695, 275)
 scale = Vector2(0.5, 0.5)
+
+[node name="Trap" parent="." instance=ExtResource("7_rqmdb")]
+position = Vector2(122, 320)
