@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cftqk0fmvwtup"]
+[gd_scene load_steps=7 format=3 uid="uid://cftqk0fmvwtup"]
 
 [ext_resource type="Texture2D" uid="uid://cnieg61sg3oqh" path="res://art/oak_woods_v1.0/oak_woods_tileset.png" id="1_inr7e"]
 [ext_resource type="PackedScene" uid="uid://en8wi0qtv0tv" path="res://Character/player.tscn" id="2_myph0"]
 [ext_resource type="PackedScene" uid="uid://etthwiro3vmq" path="res://Character/Enemies/enemy.tscn" id="3_e1ni2"]
+[ext_resource type="PackedScene" uid="uid://p214ir1p5dnp" path="res://cenas/parallax.tscn" id="4_yde4s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v7sa8"]
 texture = ExtResource("1_inr7e")
@@ -1360,3 +1361,5 @@ collision_mask = 3
 [node name="Player" parent="." instance=ExtResource("2_myph0")]
 position = Vector2(39, 153)
 scale = Vector2(0.75, 0.75)
+
+[node name="Parallax" parent="." instance=ExtResource("4_yde4s")]
