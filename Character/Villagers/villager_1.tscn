@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://befvfkmyyd4uw"]
+[gd_scene load_steps=21 format=3 uid="uid://befvfkmyyd4uw"]
 
 [ext_resource type="Script" path="res://Character/Villagers/villager_1.gd" id="1_1g0nc"]
 [ext_resource type="Texture2D" uid="uid://cjflv5nqfrnjs" path="res://art/free-villagers-sprite-sheets-pixel-art/3 Man/Man_idle.png" id="1_lbj5i"]
@@ -182,7 +182,10 @@ _data = {
 "walk": SubResource("Animation_v8fhv")
 }
 
-[node name="Villager1" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_wtp56"]
+radius = 28.0179
+
+[node name="Villager1" type="CharacterBody2D" groups=["interactions"]]
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_1g0nc")
@@ -201,3 +204,8 @@ shape = SubResource("CapsuleShape2D_vav0l")
 libraries = {
 "": SubResource("AnimationLibrary_21x0x")
 }
+
+[node name="Interaction" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction"]
+shape = SubResource("CircleShape2D_wtp56")

@@ -7,6 +7,8 @@ extends CharacterBody2D
 
 @onready var animation = $AnimationPlayer
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var interact = $Interact
+var interact_target = null
 
 var gravity = 900
 var animation_locked = false
@@ -24,10 +26,16 @@ signal health_changed(health)
 func _process(delta):
 	if Input.is_action_just_pressed("attack"):
 		attack()
+		
+	if interact_target and Input.is_action_just_pressed("interact"):
+		print("interact")
+		interact_target.queue_free()
+		interact_target = null
 
 func _ready():
 	health = max_health
 	animation.connect("animation_finished", Callable(self, "_on_Animation_finished"))
+	interact.connect("area_entered", Callable(self, "_on_interact_area_entered"))
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -96,3 +104,8 @@ func attack():
 func _on_attack_area_area_entered(area):
 	if area.get_parent().is_in_group("inimigos"):
 		area.get_parent().take_damage(5)
+
+func _on_interact_area_entered(area):
+	print("area")
+	if area.get_parent().is_in_group("interactions"):
+		interact_target = area.get_parent()

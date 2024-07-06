@@ -3,6 +3,8 @@
 extends CharacterBody2D
 
 @onready var animation = $AnimationPlayer
+@onready var ray_cast = $RayCast2D
+@onready var health_bar = $HealthBar
 
 var speed = 60
 var max_health = 20
