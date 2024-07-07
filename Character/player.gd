@@ -7,6 +7,7 @@ extends CharacterBody2D
 
 @onready var animation = $AnimationPlayer
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var health_bar = $HealthBar
 @onready var interact = $Interact
 var interact_target = null
 
@@ -17,7 +18,7 @@ var direction = Vector2.ZERO
 @export var attacking = false
 
 var is_dead = false
-var max_health = 50
+var max_health = 100
 var health = 0
 var can_take_damage = true
 
@@ -34,6 +35,8 @@ func _process(delta):
 
 func _ready():
 	health = max_health
+	health_bar.value = health
+	health_bar.max_value = max_health
 	animation.connect("animation_finished", Callable(self, "_on_Animation_finished"))
 	interact.connect("area_entered", Callable(self, "_on_interact_area_entered"))
 
@@ -82,7 +85,7 @@ func take_damage(damage : int):
 		animation.play("hurt")
 		iframes()
 		health -= damage
-		health_changed.emit(health)
+		health_bar.value = health
 		
 		if health <= 0:
 			die()
@@ -95,6 +98,7 @@ func iframes():
 func die():
 	print("morreu")
 	is_dead = true
+	speed = 0
 	animation.play("dead")
 
 func attack():

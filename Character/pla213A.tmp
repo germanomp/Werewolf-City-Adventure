@@ -1,6 +1,7 @@
-[gd_scene load_steps=62 format=3 uid="uid://en8wi0qtv0tv"]
+[gd_scene load_steps=61 format=3 uid="uid://en8wi0qtv0tv"]
 
 [ext_resource type="Script" path="res://Character/player.gd" id="1_nk0sd"]
+[ext_resource type="PackedScene" uid="uid://dim5pf06vioxw" path="res://cenas/ui/health_bar.tscn" id="2_8vga2"]
 [ext_resource type="Texture2D" uid="uid://bj3gayeak07is" path="res://art/free-werewolf-sprite-sheets-pixel-art/Black_Werewolf/Run+Attack.png" id="2_vl3qd"]
 [ext_resource type="Texture2D" uid="uid://cagnxceip1aqf" path="res://art/free-werewolf-sprite-sheets-pixel-art/Black_Werewolf/Dead.png" id="3_yvut0"]
 [ext_resource type="Texture2D" uid="uid://bnyv8mmd5es4l" path="res://art/free-werewolf-sprite-sheets-pixel-art/Black_Werewolf/Hurt.png" id="4_l3yst"]
@@ -595,15 +596,15 @@ size = Vector2(81, 52)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nvbbx"]
 size = Vector2(97.0346, 99.822)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e5qkk"]
-bg_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kogvw"]
-bg_color = Color(0.71, 0, 0, 1)
-
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 4
 script = ExtResource("1_nk0sd")
+
+[node name="HealthBar" parent="." instance=ExtResource("2_8vga2")]
+offset_left = 1.0
+offset_top = 36.0
+offset_right = 1.0
+offset_bottom = 36.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-57, -97)
@@ -652,16 +653,6 @@ shape = SubResource("RectangleShape2D_0f2o3")
 position = Vector2(6.5, 0.999999)
 scale = Vector2(1.57676, 0.901605)
 shape = SubResource("RectangleShape2D_nvbbx")
-
-[node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = -30.0
-offset_top = -52.0
-offset_right = 54.0
-offset_bottom = -44.0
-theme_override_styles/background = SubResource("StyleBoxFlat_e5qkk")
-theme_override_styles/fill = SubResource("StyleBoxFlat_kogvw")
-value = 50.0
-show_percentage = false
 
 [connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_area_entered"]
 [connection signal="area_entered" from="Interact" to="." method="_on_interact_area_entered"]
