@@ -532,7 +532,8 @@ position = Vector2(-1, 16)
 shape = SubResource("CapsuleShape2D_0nxh1")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(35, 0)
+position = Vector2(29, 0)
+target_position = Vector2(0, 66)
 
 [node name="AttackArea" type="Area2D" parent="."]
 collision_layer = 8
@@ -543,3 +544,4 @@ position = Vector2(64, -8)
 shape = SubResource("CircleShape2D_7w25x")
 
 [connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_area_entered"]
+[connection signal="area_exited" from="AttackArea" to="." method="_on_attack_area_area_exited"]

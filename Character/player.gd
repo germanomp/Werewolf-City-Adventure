@@ -106,6 +106,5 @@ func _on_attack_area_area_entered(area):
 		area.get_parent().take_damage(5)
 
 func _on_interact_area_entered(area):
-	print("area")
 	if area.get_parent().is_in_group("interactions"):
 		interact_target = area.get_parent()

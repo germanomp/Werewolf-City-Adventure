@@ -5,14 +5,17 @@ extends CharacterBody2D
 @onready var animation = $AnimationPlayer
 @onready var ray_cast = $RayCast2D
 @onready var health_bar = $HealthBar
+@onready var detection_area = $DetectionArea
 
 var speed = 60
 var max_health = 20
 var health 
-
 var gravity = 900 
-
 var facing_right = true
+
+var player_detected = false
+var attack_range = 50  # Ajuste conforme necessário
+var player = null
 
 func _ready():
 	animation.play("run")
@@ -20,18 +23,21 @@ func _ready():
 
 func _physics_process(delta):
 	
-	if not is_on_floor:
+	if not is_on_floor():
 		velocity.y += gravity * delta
 		
-	if !$RayCast2D.is_colliding() && is_on_floor():
-		flip()
+	if not player_detected:
+		patrol()
 		
-	velocity.x = speed
 	move_and_slide()
+
+func patrol():
+	if not ray_cast.is_colliding() and is_on_floor():
+		flip()
+	velocity.x = speed
 
 func flip():
 	facing_right = !facing_right
-	
 	scale.x = abs(scale.x) * -1
 	if facing_right:
 		speed = abs(speed)
@@ -51,6 +57,11 @@ func die():
 	animation.play("death")
 
 func _on_attack_area_area_entered(area):
-	animation.play("attack")
 	if area.get_parent().is_in_group("player"):
+		animation.play("attack")
 		area.get_parent().take_damage(10)
+	#else:
+		#animation.play("run")
+
+#func _on_attack_area_area_exited(area):
+	#animation.play("run")
