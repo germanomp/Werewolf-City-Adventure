@@ -183,7 +183,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wtp56"]
-radius = 28.0179
+radius = 27.0185
 
 [node name="Villager1" type="CharacterBody2D" groups=["interactions"]]
 collision_layer = 4
