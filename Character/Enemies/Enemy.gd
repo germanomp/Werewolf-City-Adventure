@@ -60,8 +60,3 @@ func _on_attack_area_area_entered(area):
 	if area.get_parent().is_in_group("player"):
 		animation.play("attack")
 		area.get_parent().take_damage(10)
-	#else:
-		#animation.play("run")
-
-#func _on_attack_area_area_exited(area):
-	#animation.play("run")

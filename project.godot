@@ -14,7 +14,7 @@ config/name="Werewolf-city-adventure"
 config/description="lobo pidão gameplay"
 run/main_scene="res://game.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://art/free-werewolf-sprite-sheets-pixel-art/Black_Werewolf/walk1.png"
+config/icon="res://art/logo.png"
 
 [display]
 
