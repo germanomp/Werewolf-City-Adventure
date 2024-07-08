@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var health_bar = $"../Ui/HealthBar"
 @onready var interact = $Interact
+
 var interact_target = null
 
 var gravity = 900
@@ -38,7 +39,7 @@ func _ready():
 	health_bar.value = health
 	health_bar.max_value = max_health
 	animation.connect("animation_finished", Callable(self, "_on_Animation_finished"))
-	interact.connect("area_entered", Callable(self, "_on_interact_area_entered"))
+	#interact.connect("area_entered", Callable(self, "_on_interact_area_entered"))
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -96,10 +97,12 @@ func iframes():
 	can_take_damage = true
 	
 func die():
-	print("morreu")
 	is_dead = true
 	speed = 0
 	animation.play("dead")
+	
+func post_dead():
+	get_tree().change_scene_to_file("res://game.tscn")
 
 func attack():
 	attacking = true
