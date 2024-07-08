@@ -7,7 +7,7 @@ extends CharacterBody2D
 
 @onready var animation = $AnimationPlayer
 @onready var animated_sprite = $AnimatedSprite2D
-@onready var health_bar = $HealthBar
+@onready var health_bar = $"../Ui/HealthBar"
 @onready var interact = $Interact
 var interact_target = null
 

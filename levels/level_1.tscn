@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://biv8ulkxtmsnh"]
+[gd_scene load_steps=10 format=3 uid="uid://biv8ulkxtmsnh"]
 
 [ext_resource type="TileSet" uid="uid://dj5be6s6fwtbq" path="res://levels/tileset.tres" id="1_4jwai"]
 [ext_resource type="Script" path="res://levels/VillagersManager.gd" id="2_cr25y"]
@@ -8,15 +8,31 @@
 [ext_resource type="PackedScene" uid="uid://befvfkmyyd4uw" path="res://Character/Villagers/villager_1.tscn" id="5_fy4dx"]
 [ext_resource type="PackedScene" uid="uid://cnt16cvbjfcmg" path="res://cenas/misc/trap.tscn" id="7_rqmdb"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mmneg"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oeqlk"]
+bg_color = Color(0.71, 0, 0, 1)
+
 [node name="Level1" type="Node2D"]
 
 [node name="Ui" type="CanvasLayer" parent="."]
 
 [node name="Contador" type="Label" parent="Ui"]
+offset_left = 600.0
+offset_top = 10.0
+offset_right = 750.0
+offset_bottom = 35.0
+
+[node name="HealthBar" type="ProgressBar" parent="Ui"]
 offset_left = 10.0
 offset_top = 10.0
-offset_right = 157.0
-offset_bottom = 33.0
+offset_right = 110.0
+offset_bottom = 20.0
+theme_override_styles/background = SubResource("StyleBoxFlat_mmneg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_oeqlk")
+value = 50.0
+show_percentage = false
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_4jwai")
