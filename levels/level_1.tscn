@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://biv8ulkxtmsnh"]
+[gd_scene load_steps=12 format=3 uid="uid://biv8ulkxtmsnh"]
 
 [ext_resource type="PackedScene" uid="uid://benpyywci5ew4" path="res://cenas/ui/pause_menu.tscn" id="1_2ithx"]
 [ext_resource type="TileSet" uid="uid://dj5be6s6fwtbq" path="res://levels/tileset.tres" id="1_4jwai"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://etthwiro3vmq" path="res://Character/Enemies/enemy.tscn" id="4_nrr2f"]
 [ext_resource type="PackedScene" uid="uid://befvfkmyyd4uw" path="res://Character/Villagers/villager_1.tscn" id="5_fy4dx"]
 [ext_resource type="PackedScene" uid="uid://cnt16cvbjfcmg" path="res://cenas/misc/trap.tscn" id="7_rqmdb"]
+[ext_resource type="PackedScene" uid="uid://cx0sp2v52rbrd" path="res://cenas/ui/transition.tscn" id="9_j41ob"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mmneg"]
 bg_color = Color(0, 0, 0, 1)
@@ -63,7 +64,7 @@ format = 2
 layer_0/tile_data = PackedInt32Array(1245296, 2, 16, 1310832, 2, 17, 1376368, 2, 18, 1441904, 2, 19, 1245297, 65538, 16, 1310833, 65538, 17, 1376369, 65538, 18, 1441905, 65538, 19, 1245298, 131074, 16, 1310834, 131074, 17, 1376370, 131074, 18, 1441906, 131074, 19, 1245299, 196610, 16, 1310835, 196610, 17, 1376371, 196610, 18, 1441907, 196610, 19, 1245303, 2, 16, 1310839, 2, 17, 1376375, 2, 18, 1441911, 2, 19, 1245304, 65538, 16, 1310840, 65538, 17, 1376376, 65538, 18, 1441912, 65538, 19, 1245305, 131074, 16, 1310841, 131074, 17, 1376377, 131074, 18, 1441913, 131074, 19, 1245306, 196610, 16, 1310842, 196610, 17, 1376378, 196610, 18, 1441914, 196610, 19, 1245289, 2, 16, 1310825, 2, 17, 1376361, 2, 18, 1441897, 2, 19, 1245290, 65538, 16, 1310826, 65538, 17, 1376362, 65538, 18, 1441898, 65538, 19, 1245291, 131074, 16, 1310827, 131074, 17, 1376363, 131074, 18, 1441899, 131074, 19, 1245292, 196610, 16, 1310828, 196610, 17, 1376364, 196610, 18, 1441900, 196610, 19, 1179753, 2, 15, 1179754, 65538, 15, 1179755, 131074, 15, 1179756, 196610, 15, 1179760, 2, 15, 1179761, 65538, 15, 1179762, 131074, 15, 1179763, 196610, 15, 1179767, 2, 15, 1179768, 65538, 15, 1179769, 131074, 15, 1179770, 196610, 15)
 
 [node name="Player" parent="." instance=ExtResource("3_q1g4h")]
-position = Vector2(65, 335)
+position = Vector2(1695, 334)
 collision_mask = 5
 
 [node name="Enemies" type="Node" parent="."]
@@ -96,3 +97,5 @@ position = Vector2(1769, 320)
 
 [node name="Trap4" parent="Traps" instance=ExtResource("7_rqmdb")]
 position = Vector2(1876, 318)
+
+[node name="Transition" parent="." instance=ExtResource("9_j41ob")]

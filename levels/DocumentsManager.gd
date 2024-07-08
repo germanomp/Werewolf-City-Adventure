@@ -2,6 +2,7 @@ extends Node
 
 var books = []
 @onready var contador = $"../Ui/Contador"
+@onready var transition = $"../Transition"
 
 func _ready():
 	for child in get_children():
@@ -18,6 +19,8 @@ func _on_book_recovered(book):
 		_transition_to_next_scene()
 		
 func _transition_to_next_scene():
+	transition.transition()
+	await transition.on_transition_finished
 	get_tree().change_scene_to_file("res://levels/level_final.tscn")
 	
 func _update_book_counter():
