@@ -10,8 +10,14 @@ var gravity = 900
 
 var facing_right = true
 
+signal villager_rescued
+
 func _ready():
 	$AnimationPlayer.play("idle")
+
+func die():
+	emit_signal("villager_rescued", self)
+	queue_free()
 
 #func _physics_process(delta):
 	

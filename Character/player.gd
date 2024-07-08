@@ -3,7 +3,7 @@
 extends CharacterBody2D
 
 @export var speed = 200
-@export var jump_speed = -500
+@export var jump_speed = -400
 
 @onready var animation = $AnimationPlayer
 @onready var animated_sprite = $AnimatedSprite2D
@@ -29,8 +29,8 @@ func _process(delta):
 		attack()
 		
 	if interact_target and Input.is_action_just_pressed("interact"):
-		print("interact")
-		interact_target.queue_free()
+		interact_target.die()
+		#interact_target.queue_free()
 		interact_target = null
 
 func _ready():

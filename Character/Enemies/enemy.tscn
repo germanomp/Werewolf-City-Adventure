@@ -524,6 +524,7 @@ height = 54.0
 radius = 51.1566
 
 [node name="Enemy" type="CharacterBody2D" groups=["inimigos"]]
+scale = Vector2(0.5, 0.5)
 collision_layer = 4
 script = ExtResource("1_n2bit")
 
