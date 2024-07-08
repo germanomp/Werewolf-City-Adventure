@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://biv8ulkxtmsnh"]
+[gd_scene load_steps=11 format=3 uid="uid://biv8ulkxtmsnh"]
 
+[ext_resource type="PackedScene" uid="uid://benpyywci5ew4" path="res://cenas/ui/pause_menu.tscn" id="1_2ithx"]
 [ext_resource type="TileSet" uid="uid://dj5be6s6fwtbq" path="res://levels/tileset.tres" id="1_4jwai"]
 [ext_resource type="Script" path="res://levels/VillagersManager.gd" id="2_cr25y"]
 [ext_resource type="PackedScene" uid="uid://8yciw3bxjcbo" path="res://cenas/parallax.tscn" id="2_ijh82"]
@@ -17,6 +18,8 @@ bg_color = Color(0.71, 0, 0, 1)
 [node name="Level1" type="Node2D"]
 
 [node name="Ui" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="Ui" instance=ExtResource("1_2ithx")]
 
 [node name="Contador" type="Label" parent="Ui"]
 offset_left = 600.0

@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://baft07c7ntj8i"]
+[gd_scene load_steps=11 format=3 uid="uid://baft07c7ntj8i"]
 
 [ext_resource type="TileSet" uid="uid://dj5be6s6fwtbq" path="res://levels/tileset.tres" id="1_42ch1"]
 [ext_resource type="PackedScene" uid="uid://dr1j2amtx5f5d" path="res://cenas/parallax2.tscn" id="2_wk22u"]
 [ext_resource type="PackedScene" uid="uid://etthwiro3vmq" path="res://Character/Enemies/enemy.tscn" id="3_h0gac"]
+[ext_resource type="PackedScene" uid="uid://benpyywci5ew4" path="res://cenas/ui/pause_menu.tscn" id="3_r55vw"]
 [ext_resource type="PackedScene" uid="uid://cnt16cvbjfcmg" path="res://cenas/misc/trap.tscn" id="3_rvepc"]
 [ext_resource type="PackedScene" uid="uid://nhaljrnqnta3" path="res://cenas/misc/book.tscn" id="4_wn4k0"]
 [ext_resource type="PackedScene" uid="uid://en8wi0qtv0tv" path="res://Character/player.tscn" id="5_exn43"]
@@ -24,6 +25,8 @@ layer_0/tile_data = PackedInt32Array(1441797, 196610, 1, 1507333, 196610, 2, 144
 [node name="Parallax2" parent="." instance=ExtResource("2_wk22u")]
 
 [node name="Ui" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="Ui" instance=ExtResource("3_r55vw")]
 
 [node name="Contador" type="Label" parent="Ui"]
 offset_left = 567.0
