@@ -66,7 +66,7 @@ collision_mask = 5
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("4_nrr2f")]
-position = Vector2(377, 269)
+position = Vector2(395, 270)
 scale = Vector2(0.489592, 0.478015)
 collision_mask = 5
 

@@ -275,7 +275,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vbmb0"]
-radius = 8.0
+radius = 15.0
 height = 52.0
 
 [sub_resource type="Animation" id="Animation_papp6"]
@@ -453,6 +453,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_axkau"]
 resource_name = "idle"
 length = 0.8
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -481,6 +482,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_w2juk"]
 resource_name = "run"
 length = 0.8
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

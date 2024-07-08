@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://ch57ifvlr47lt"]
+[gd_scene load_steps=53 format=3 uid="uid://ch57ifvlr47lt"]
 
 [ext_resource type="Script" path="res://Character/Enemies/boss.gd" id="1_cu5w8"]
 [ext_resource type="Texture2D" uid="uid://dlwi5wail2uqj" path="res://art/Evil Wizard/Attack.png" id="1_yqa03"]
@@ -273,7 +273,6 @@ size = Vector2(26, 45)
 [sub_resource type="Animation" id="Animation_bf0lh"]
 resource_name = "idle"
 length = 0.8
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -449,7 +448,6 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_2px7n"]
 resource_name = "move"
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -491,8 +489,10 @@ size = Vector2(26, 45)
 [sub_resource type="CircleShape2D" id="CircleShape2D_l4egn"]
 radius = 29.0689
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ol2eb"]
+radius = 99.0808
+
 [node name="Boss" type="CharacterBody2D" groups=["inimigos"]]
-scale = Vector2(2, 2)
 collision_layer = 4
 script = ExtResource("1_cu5w8")
 
@@ -531,9 +531,19 @@ collision_mask = 8
 position = Vector2(36, 0)
 shape = SubResource("CircleShape2D_l4egn")
 
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_ol2eb")
+
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(15, -2)
 target_position = Vector2(0, 30)
 
 [connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_area_entered"]
-[connection signal="area_exited" from="AttackArea" to="." method="_on_attack_area_area_exited"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="area_exited" from="DetectionArea" to="." method="_on_detection_area_area_exited"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

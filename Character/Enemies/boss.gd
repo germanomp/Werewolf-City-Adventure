@@ -1,19 +1,19 @@
-@icon("res://art/Evil Wizard/Idle1.png")
+@icon("res://art/Evil Wizard/Idle2.png")
 
 extends CharacterBody2D
 
 @onready var animation = $AnimationPlayer
-@onready var ray_cast = $RayCast2D
 @onready var health_bar = $HealthBar
+@onready var ray_cast = $RayCast2D
 
 var speed = 60
-var max_health = 20
+var max_health = 50
 var health 
 var gravity = 900 
 var facing_right = true
 
 var player_detected = false
-var attack_range = 50  
+var attack_range = 100 
 var player = null
 
 func _ready():
@@ -58,7 +58,7 @@ func die():
 func _on_attack_area_area_entered(area):
 	if area.get_parent().is_in_group("player"):
 		animation.play("attack")
-		area.get_parent().take_damage(10)
+		area.get_parent().take_damage(20)
 
 #func _on_attack_area_area_exited(area):
-	#animation.play("run")
+	#animation.play("move")
