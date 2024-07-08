@@ -18,7 +18,7 @@ func _on_book_recovered(book):
 		_transition_to_next_scene()
 		
 func _transition_to_next_scene():
-	get_tree().change_scene_to_file("res://levels/level_1.tscn")
+	get_tree().change_scene_to_file("res://levels/level_final.tscn")
 	
 func _update_book_counter():
 	contador.text = "Documentos restantes: " + str(books.size())
