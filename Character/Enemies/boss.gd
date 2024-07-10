@@ -5,21 +5,22 @@ extends CharacterBody2D
 @onready var animation = $AnimationPlayer
 @onready var health_bar = $HealthBar
 @onready var ray_cast = $RayCast2D
+@onready var player = $"../Player"
+@onready var transition = $"../Transition"
 
 var speed = 60
-var max_health = 50
+var max_health = 100
 var health 
 var gravity = 900 
 var facing_right = true
 
-var player_detected = false
+var player_detected = null
 var attack_range = 100 
-var player = null
 
 func _ready():
-	animation.play("run")
+	animation.play("move")
 	health = max_health
-
+	
 func _physics_process(delta):
 	
 	if not is_on_floor():
@@ -54,11 +55,19 @@ func take_damage(damage):
 func die():
 	speed = 0
 	animation.play("death")
+	
+func post_dead():
+	transition.transition()
+	await transition.on_transition_finished
+	get_tree().change_scene_to_file("res://game.tscn")
 
 func _on_attack_area_area_entered(area):
 	if area.get_parent().is_in_group("player"):
 		animation.play("attack")
-		area.get_parent().take_damage(20)
 
-#func _on_attack_area_area_exited(area):
-	#animation.play("move")
+func attack():
+	if player.has_method("take_damage"):
+		player.take_damage(20)
+
+func _on_attack_area_area_exited(area):
+	patrol()

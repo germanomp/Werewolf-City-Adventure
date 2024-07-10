@@ -1,13 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://cftqk0fmvwtup"]
+[gd_scene load_steps=4 format=3 uid="uid://cftqk0fmvwtup"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_o42lt"]
 [ext_resource type="Texture2D" uid="uid://chovmforau5w6" path="res://art/menu.png" id="2_ahfqd"]
+[ext_resource type="PackedScene" uid="uid://cx0sp2v52rbrd" path="res://cenas/ui/transition.tscn" id="2_vmw8f"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 4
 script = ExtResource("1_o42lt")
+
+[node name="Transition" parent="." instance=ExtResource("2_vmw8f")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(384, 206)

@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var health_bar = $"../Ui/HealthBar"
 @onready var interact = $Interact
+@onready var transition = $"../Transition"
 
 var interact_target = null
 
@@ -25,6 +26,7 @@ var can_take_damage = true
 
 signal health_changed(health)
 
+
 func _process(delta):
 	if Input.is_action_just_pressed("attack"):
 		attack()
@@ -35,9 +37,13 @@ func _process(delta):
 		interact_target = null
 
 func _ready():
-	health = max_health
+	#health = max_health
+	#health_bar.value = health
+	#health_bar.max_value = max_health
+	health = global.player_health
 	health_bar.value = health
 	health_bar.max_value = max_health
+	
 	animation.connect("animation_finished", Callable(self, "_on_Animation_finished"))
 	#interact.connect("area_entered", Callable(self, "_on_interact_area_entered"))
 
@@ -87,6 +93,7 @@ func take_damage(damage : int):
 		iframes()
 		health -= damage
 		health_bar.value = health
+		global.player_health = health
 		
 		if health <= 0:
 			die()
@@ -100,8 +107,11 @@ func die():
 	is_dead = true
 	speed = 0
 	animation.play("dead")
+	global.player_health = health
 	
 func post_dead():
+	transition.transition()
+	await transition.on_transition_finished
 	get_tree().change_scene_to_file("res://game.tscn")
 
 func attack():

@@ -10,7 +10,7 @@ func _on_area_entered(area):
 
 func _on_attack_area_area_entered(area):
 	if area.get_parent().is_in_group("player"):
-		area.get_parent().take_damage(20)
+		area.get_parent().take_damage(10)
 		
 func die():
 	queue_free()

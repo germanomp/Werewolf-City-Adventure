@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var animation = $AnimationPlayer
 @onready var ray_cast = $RayCast2D
 @onready var health_bar = $HealthBar
+@onready var player = $"../../Player"
 
 var speed = 60
 var max_health = 20
@@ -14,7 +15,6 @@ var facing_right = true
 
 var player_detected = false
 var attack_range = 50  
-var player = null
 
 func _ready():
 	animation.play("run")
@@ -58,7 +58,10 @@ func die():
 func _on_attack_area_area_entered(area):
 	if area.get_parent().is_in_group("player"):
 		animation.play("attack")
-		area.get_parent().take_damage(10)
-
+		
+func attack():
+	if player.has_method("take_damage"):
+		player.take_damage(5)
+#
 #func _on_attack_area_area_exited(area):
 	#animation.play("run")
