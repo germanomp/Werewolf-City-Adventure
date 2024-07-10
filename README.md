@@ -4,7 +4,7 @@
 
 Em "Aventura Sobrenatural em Vila Lobo", você joga como Luna, uma jovem lobisomem que deve salvar a vila da influência crescente dos feiticeiros sombrios. Explorando os diversos distritos urbanos, Luna enfrenta feiticeiros e criaturas mágicas, resgata aldeões e desativa armadilhas mágicas, tudo para restaurar a ordem e proteger a comunidade com suas habilidades sobrenaturais.
 
-## Recursos do Jogo
+## Objetivos
 
 ### Itens Fáceis:
 1. ✔ Exploração de distritos abandonados.
