@@ -63,5 +63,5 @@ func attack():
 	if player.has_method("take_damage"):
 		player.take_damage(5)
 #
-#func _on_attack_area_area_exited(area):
-	#animation.play("run")
+func _on_attack_area_area_exited(area):
+	animation.play("run")

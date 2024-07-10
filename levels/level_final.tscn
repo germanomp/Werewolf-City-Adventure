@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bmha2as7e7f55"]
+[gd_scene load_steps=10 format=3 uid="uid://bmha2as7e7f55"]
 
 [ext_resource type="PackedScene" uid="uid://benpyywci5ew4" path="res://cenas/ui/pause_menu.tscn" id="1_8hima"]
 [ext_resource type="TileSet" uid="uid://dj5be6s6fwtbq" path="res://levels/tileset.tres" id="1_m3q08"]
+[ext_resource type="PackedScene" uid="uid://cqkjfluqt6blo" path="res://cenas/ui/game_over.tscn" id="2_d54pf"]
 [ext_resource type="PackedScene" uid="uid://bhj3hw7tsgmer" path="res://cenas/parallax_3.tscn" id="2_jnr2k"]
 [ext_resource type="PackedScene" uid="uid://en8wi0qtv0tv" path="res://Character/player.tscn" id="3_0mclw"]
 [ext_resource type="PackedScene" uid="uid://ch57ifvlr47lt" path="res://Character/Enemies/boss.tscn" id="4_7wdsv"]
@@ -28,6 +29,8 @@ theme_override_styles/background = SubResource("StyleBoxFlat_efvap")
 theme_override_styles/fill = SubResource("StyleBoxFlat_1fytd")
 value = 50.0
 show_percentage = false
+
+[node name="GameOver" parent="Ui" instance=ExtResource("2_d54pf")]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_m3q08")

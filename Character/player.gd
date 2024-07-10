@@ -10,6 +10,8 @@ extends CharacterBody2D
 @onready var health_bar = $"../Ui/HealthBar"
 @onready var interact = $Interact
 @onready var transition = $"../Transition"
+@onready var game_over = $"../Ui/GameOver"
+
 
 var interact_target = null
 
@@ -54,6 +56,9 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("up") or Input.is_action_just_pressed("jump"):
 		if is_on_floor():
 			velocity.y = jump_speed
+			
+	if position.y > 900:
+		get_tree().reload_current_scene()
 			
 
 	direction = Input.get_vector("left", "right","up","down")
@@ -110,9 +115,10 @@ func die():
 	global.player_health = health
 	
 func post_dead():
-	transition.transition()
-	await transition.on_transition_finished
-	get_tree().change_scene_to_file("res://game.tscn")
+	game_over.game_over()
+	#transition.transition()
+	#await transition.on_transition_finished
+	#get_tree().change_scene_to_file("res://cenas/ui/game_over.tscn")
 
 func attack():
 	attacking = true
